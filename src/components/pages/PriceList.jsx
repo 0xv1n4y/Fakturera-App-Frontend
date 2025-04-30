@@ -89,19 +89,29 @@ const PriceList = () => {
     }));
   };
 
-  const handleSave = async (productId) => { // Save edited product to backend
-    try {
-      await axios.put(`${API_BASE_URL}/products/${productId}`, editedData);
-      const updatedProducts = products.map(p =>
-        p.id === productId ? { ...p, ...editedData } : p
-      );
-      setProducts(updatedProducts);
-      setEditingProductId(null);
-      setEditedData({});
-    } catch (error) {
-      console.error("Error updating product:", error);
+const handleSave = async (productId) => {
+  try {
+    await axios.put(`${API_BASE_URL}/products/${productId}`, editedData);
+    const updatedProducts = products.map(p =>
+      p.id === productId ? { ...p, ...editedData } : p
+    );
+    setProducts(updatedProducts);
+    setEditingProductId(null);
+    setEditedData({});
+  } catch (error) {
+    console.error("Error updating product:", error);
+
+    const response = error.response;
+
+    if (response?.status === 400 && response.data.errors) {
+      const messages = response.data.errors.map(e => `${e.field}: ${e.message}`).join('\n');
+      alert(`Validation Error:\n${messages}`);
+    } else {
+      alert(response?.data?.message || "Something went wrong while updating the product.");
     }
-  };
+  }
+};
+
 
   const handleCancelEdit = () => { // Cancel editing mode
     setEditingProductId(null);

@@ -5,7 +5,7 @@ const TermsContent = ({ data }) => {
 
   return (
     <div className='w-full py-10 flex flex-col gap-6 justify-center items-center px-4 sm:px-10'>
-      <h1 className="text-2xl font-bold text-center">{data?.title}</h1>
+      <h1 className="text-3xl font-bold text-center text-white">{data?.title}</h1>
 
       <button className="bg-green-600 text-white font-bold text-md tracking-wide py-3 px-15 rounded-full cursor-pointer">
         {data?.buttontitle}
