@@ -45,7 +45,7 @@ const Terms = () => {
 
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden">
-      {/* Fixed Background Layer */}
+      {/* Fixed Background Layer (outside the scrollable content) */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <img
           src={backgroundImage}
