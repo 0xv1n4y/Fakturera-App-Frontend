@@ -44,19 +44,15 @@ const Terms = () => {
   }
 
   return (
-    <div className="relative w-full min-h-screen text-white overflow-x-hidden">
-      {/* Background layer */}
+    <div className="relative min-h-screen text-white overflow-x-hidden">
+      {/* Fixed Background Layer */}
       <div
-        className="fixed top-0 left-0 w-full h-full -z-10"
-        style={{
-          backgroundImage: `url('${backgroundImage}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+        className="fixed inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
       />
 
-      <div className="flex flex-col justify-center items-center min-h-screen">
+      {/* Scrollable Foreground Content */}
+      <div className="flex flex-col min-h-screen">
         <TermsNavbar
           selectedLanguage={selectedLanguage}
           setSelectedLanguage={setSelectedLanguage}
