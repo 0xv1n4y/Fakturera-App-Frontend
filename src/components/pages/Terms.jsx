@@ -13,6 +13,7 @@ const Terms = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // --- Fetching logic remains the same ---
     const fetchData = async () => {
       setIsLoading(true);
       setError(null);
@@ -31,7 +32,6 @@ const Terms = () => {
       }
       setIsLoading(false);
     };
-
     fetchData();
   }, [selectedLanguage]);
 
@@ -44,25 +44,16 @@ const Terms = () => {
   }
 
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden">
-      {/* Fixed Background Layer (outside the scrollable content) */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <img
-          src={backgroundImage}
-          alt="Background"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          style={{
-            objectPosition: 'center',
-            pointerEvents: 'none',
-            userSelect: 'none',
-            transform: 'translateZ(0)',
-            imageRendering: 'auto',
-          }}
-        />
-      </div>
-
-      {/* Scrollable Foreground Content */}
-      <div className="relative flex flex-col min-h-screen">
+    // Apply background styles directly to the main container
+    <div
+      className="relative min-h-screen text-white overflow-x-hidden bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+      }}
+    >
+      <div className="relative flex flex-col min-h-screen"> 
         <TermsNavbar
           selectedLanguage={selectedLanguage}
           setSelectedLanguage={setSelectedLanguage}
