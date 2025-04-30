@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TermsNavbar from '../TermsNavbar';
 import TermsContent from '../TermsContent';
-import backgroundImage from '../../assets/wallpaper.jpg';
+import backgroundImage from '../../assets/wallpaper.jpg'; // Ensure high resolution
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
 
@@ -45,22 +45,24 @@ const Terms = () => {
 
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden">
-      {/* Background image with image tag for better quality on mobile */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 md:fixed overflow-hidden">
+      {/* Fixed Background Layer */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
         <img
           src={backgroundImage}
           alt="Background"
-          className="w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-cover"
           style={{
             objectPosition: 'center',
             pointerEvents: 'none',
             userSelect: 'none',
+            transform: 'translateZ(0)',
+            imageRendering: 'auto',
           }}
         />
       </div>
 
       {/* Scrollable Foreground Content */}
-      <div className="flex flex-col min-h-screen">
+      <div className="relative flex flex-col min-h-screen">
         <TermsNavbar
           selectedLanguage={selectedLanguage}
           setSelectedLanguage={setSelectedLanguage}
