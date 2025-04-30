@@ -5,7 +5,6 @@ import TermsNavbar from '../TermsNavbar';
 import TermsContent from '../TermsContent';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
 
-
 const Terms = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('sv');
   const [data, setData] = useState(null);
@@ -45,27 +44,33 @@ const Terms = () => {
 
   return (
     <div
-    style={{
-      backgroundImage: `url('${backgroundImage}')`,
-      backgroundAttachment: 'fixed',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      minHeight: '100vh',
-      width: '100%',
-      color: 'white',
-      overflowX: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between', 
-      height: '100%', 
-    }}>
-      <div className="flex flex-col justify-center items-center">
-        <TermsNavbar
-          selectedLanguage={selectedLanguage}
-          setSelectedLanguage={setSelectedLanguage}
-          navItems={data.list || []}
-        />
-        <TermsContent data={data} />
+      style={{
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minHeight: '100vh',
+        width: '100%',
+        color: 'white',
+        overflowX: 'hidden',
+      }}>
+      <div 
+        style={{
+          minHeight: '100vh',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div className="flex flex-col justify-center items-center flex-grow">
+          <TermsNavbar
+            selectedLanguage={selectedLanguage}
+            setSelectedLanguage={setSelectedLanguage}
+            navItems={data.list || []}
+          />
+          <TermsContent data={data} />
+        </div>
       </div>
     </div>
   );
