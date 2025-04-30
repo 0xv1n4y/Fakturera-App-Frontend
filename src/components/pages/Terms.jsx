@@ -45,7 +45,7 @@ const Terms = () => {
 
   return (
     <div
-      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundAttachment: 'fixed',  backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
+      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundAttachment: window.innerWidth >= 768 ? 'fixed' : 'scroll',  backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
         minHeight: '100vh', width: '100%', color: 'white', overflowX: 'hidden',}}>
       <div className="flex flex-col justify-center items-center">
         <TermsNavbar
