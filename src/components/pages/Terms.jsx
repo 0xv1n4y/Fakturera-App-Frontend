@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import backgroundImage from '../../assets/wallpaper.jpg';
 import axios from 'axios';
 import TermsNavbar from '../TermsNavbar';
 import TermsContent from '../TermsContent';
+import backgroundImage from '../../assets/wallpaper.jpg';
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
 
 const Terms = () => {
@@ -43,34 +44,25 @@ const Terms = () => {
   }
 
   return (
-    <div
-      style={{
-        backgroundImage: `url('${backgroundImage}')`,
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-        width: '100%',
-        color: 'white',
-        overflowX: 'hidden',
-      }}>
-      <div 
+    <div className="relative w-full min-h-screen text-white overflow-x-hidden">
+      {/* Background layer */}
+      <div
+        className="fixed top-0 left-0 w-full h-full -z-10"
         style={{
-          minHeight: '100vh',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
+          backgroundImage: `url('${backgroundImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
-      >
-        <div className="flex flex-col justify-center items-center flex-grow">
-          <TermsNavbar
-            selectedLanguage={selectedLanguage}
-            setSelectedLanguage={setSelectedLanguage}
-            navItems={data.list || []}
-          />
-          <TermsContent data={data} />
-        </div>
+      />
+
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <TermsNavbar
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
+          navItems={data.list || []}
+        />
+        <TermsContent data={data} />
       </div>
     </div>
   );
