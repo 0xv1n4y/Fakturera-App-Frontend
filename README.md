@@ -1,5 +1,5 @@
 
-# 📄 Mini App - Frontend Readme
+# 📦 Mini Web Application
 
 ---
 
@@ -46,7 +46,6 @@ frontend/
 │   ├── components/
 │   ├── pages/
 │   ├── services/
-│   ├── utils/
 │   ├── App.jsx
 │   └── main.jsx
 ├── package.json
