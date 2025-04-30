@@ -45,10 +45,16 @@ const Terms = () => {
 
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden">
-      {/* Fixed Background Layer */}
+      {/* Background Layer - fixed on desktop, absolute on mobile */}
       <div
-        className="fixed inset-0 -z-10 bg-cover bg-center"
-        style={{ backgroundImage: `url('${backgroundImage}')` }}
+        className="absolute top-0 left-0 w-full h-full -z-10 bg-cover bg-center md:fixed"
+        style={{
+          backgroundImage: `url('${backgroundImage}')`,
+          backgroundAttachment: 'scroll',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       />
 
       {/* Scrollable Foreground Content */}
