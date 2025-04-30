@@ -4,6 +4,8 @@ import Header from "../Header";
 import Drawer from "../Drawer";
 import axios from 'axios';
 import Tabel from '../Tabel'; 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const PriceList = () => {
   // UI state management
@@ -47,7 +49,7 @@ const PriceList = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get("/products");
+        const response = await axios.get(`${API_BASE_URL}/products`);
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
@@ -88,7 +90,7 @@ const PriceList = () => {
 
   const handleSave = async (productId) => { // Save edited product to backend
     try {
-      await axios.put(`/products/${productId}`, editedData);
+      await axios.put(`${API_BASE_URL}/products/${productId}`, editedData);
       const updatedProducts = products.map(p =>
         p.id === productId ? { ...p, ...editedData } : p
       );

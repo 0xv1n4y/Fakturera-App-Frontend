@@ -3,6 +3,7 @@ import backgroundImage from '../../assets/wallpaper.jpg';
 import axios from 'axios';
 import TermsNavbar from '../TermsNavbar';
 import TermsContent from '../TermsContent';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Terms = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('sv');
@@ -15,7 +16,7 @@ const Terms = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`/terms/${selectedLanguage}`);
+        const response = await axios.get(`${API_BASE_URL}/terms/${selectedLanguage}`);
         if (response.data && response.data.length > 0) {
           setData(response.data[0]);
         } else {
