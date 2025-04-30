@@ -45,8 +45,20 @@ const Terms = () => {
 
   return (
     <div
-      style={{ backgroundImage: `url('${backgroundImage}')`, backgroundAttachment: 'fixed',  backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
-        minHeight: '100vh', width: '100%', color: 'white', overflowX: 'hidden',}}>
+    style={{
+      backgroundImage: `url('${backgroundImage}')`,
+      backgroundAttachment: 'fixed',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      minHeight: '100vh',
+      width: '100%',
+      color: 'white',
+      overflowX: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between', 
+      height: '100%', 
+    }}>
       <div className="flex flex-col justify-center items-center">
         <TermsNavbar
           selectedLanguage={selectedLanguage}
