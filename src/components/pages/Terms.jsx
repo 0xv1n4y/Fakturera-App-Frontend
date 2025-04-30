@@ -3,7 +3,8 @@ import backgroundImage from '../../assets/wallpaper.jpg';
 import axios from 'axios';
 import TermsNavbar from '../TermsNavbar';
 import TermsContent from '../TermsContent';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
+
 
 const Terms = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('sv');

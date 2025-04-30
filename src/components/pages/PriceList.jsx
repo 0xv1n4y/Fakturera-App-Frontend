@@ -4,7 +4,8 @@ import Header from "../Header";
 import Drawer from "../Drawer";
 import axios from 'axios';
 import Tabel from '../Tabel'; 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
+console.log(API_BASE_URL)
 
 
 const PriceList = () => {
